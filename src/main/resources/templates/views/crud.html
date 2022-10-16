@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Franco Minati | CRUD</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' th:href="@{/styles.css}">
+
+</head>
+
+<body>
+<div class="page-content">
+        <nav th:replace="views/components/navbar :: nav_bar"></nav>
+        <div class=" content" role="main">
+                <div class="crud">
+                    <a class="btn__portfolio" th:href="@{/editar/0}">Agregar Proyecto</a>
+                    <table class="tabla__crud">
+                        <thead>
+                            <th class="th__crud">Imagen</th>
+                            <th class="th__crud">Nombre</th>
+                            <th class="th__crud">Estado</th>
+                            <th class="th__crud">Acciones</th>
+                        </thead>
+                        <tbody>
+                            <tr class="tbody__crud" th:each="proyecto : ${proyectos}" th:classappend="${proyecto.getEstado().equals(T(com.example.franco.portfolioprueba.entitites.Estado).INACTIVO) ? 'bgred': 'bgwhite'}">
+                                <td class="td__crud"><img th:src="@{'/imagenes/'+${proyecto.imagen}}" alt="img" class="img__proyecto"></td>
+                                <td class="td__crud" th:text="${proyecto.nombre}"></td>
+                                <td class="td__crud" th:text="${proyecto.estado}"></td>
+                                <td class="td__crud">
+                                    <a class="btn__crud editar" th:href="@{/editar/{id}(id=${proyecto.id})}">Editar</a>
+                                    <a class="btn__crud eliminar" th:if="${proyecto.estado.ACTIVO}" th:href="@{/eliminar/proyecto/{id}(id=${proyecto.id})}">Eliminar</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+</div>
+
+</body>
+
+</html>

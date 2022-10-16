@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Franco Minati | Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' th:href="@{/styles.css}">
+</head>
+
+<body>
+    <div class="page-content">
+        <nav th:replace="views/components/navbar :: nav_bar"></nav>
+        <div class=" content-form" role="main">
+            <form th:action="@{/guardar/{id}(id=${proyecto.id}?${proyecto.id}:'0')}" th:object="${proyecto}" method="post" enctype="multipart/form-data" class="formulario">
+                <fieldset>Formulario Proyecto</fieldset>
+                <div class="form_content">
+                    <div class="column">
+                        <label for="nombre" class="form_label">Nombre proyecto</label>
+                        <input type="text" id="nombre" class="form_txt_input" th:field="*{nombre}">
+                        <div class="bgred" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+
+                    </div>
+                    <div class="column">
+                        <label for="url" class="form_label">URL Repositorio</label>
+                        <input type="text" id="url" class="form_txt_input" th:field="*{url}">
+                        <div class="bgred" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></div>
+                    </div>
+                    <div class="column">
+                        <label for="deploy" class="form_label">Pagina Deploy</label>
+                        <input type="text" id="deploy" class="form_txt_input" th:field="*{deploy_url}">
+                        <div class="bgred" th:if="${#fields.hasErrors('deploy_url')}" th:errors="*{deploy_url}"></div>
+                    </div>
+                    <div class="column">
+                        <label for="archivo" class="form_label">Imagen</label>
+                        <input type="file" id="archivo" class="form_txt_input" name="archivo">
+                        <div class="text-danger" th:if="${errorImagenMsg}" th:text="${errorImagenMsg}"></div>
+                        <input type="hidden" class="form-control" id="imagen" th:field="*{imagen}" name="imagen">
+                    </div>
+                    <div class="column">
+                        <label for="estado" class="form_label">Estado</label>
+                        <input type="text" id="estado" class="form_txt_input" th:field="*{estado}">
+                        <div class="bgred" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+                    </div>
+                    <div class="column textarea">
+                        <label for="descripcion" class="form_label_textarea">Descripción</label>
+                        <textarea name="" id="descripcion" cols="40" rows="10" maxlength="256" th:field="*{descripcion}"></textarea>
+                        <div class="bgred" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+                    </div>
+                    <div class="botones">
+                        <button class="btn_form " type="submit">Guardar</button>
+                        <button class="btn_form " type="reset">Resetear formulario</button>
+                    </div>
+                </div>
+                    
+            </form>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

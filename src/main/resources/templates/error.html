@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Franco Minati | Index</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' th:href="@{/styles.css}">
+</head>
+
+<body>
+<div class="page-content">
+  <nav th:replace="views/components/navbar :: nav_bar"></nav>
+
+  <div class=" content" role="main">
+    <div class="inicio">
+      <h1 class="saludo">Hola!, Soy Franco Minati</h1>
+      <h2 class="saludo-b">Algo salio, mal</h2>
+      <p class="proyectos__title" th:text="${error}"></p>
+
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<nav th:fragment="nav_bar" role="navigation" class="nav">
+  <div class="nav__content">
+  <a href="index.html" class="img__perfil"><img th:src="@{/img-static/foto-perfil.jpg}" alt="foto-perf"
+                                                class="img__perfil"></a>
+  <h2 class="nombre">Franco Minati</h2>
+  <p class="descripcion">Desarrollador <strong class="profesion">Front-End</strong></p>
+  <ul class="nav__list">
+    <a class="nav__link" th:href="@{/inicio}"><li class="nav__link">Inicio</li></a>
+    <li class="nav__link">Portfolio</li>
+    <li class="nav__link">Acerca de</li>
+    <li class="nav__link">Habilidades</li>
+    <li class="nav__link">Tecnologías</li>
+    <li class="nav__link">Contacto</li>
+  </ul>
+  <div id="copyright" class="copyright">&copy; 2022 - 2022 www.franco-minati - All Rights Reserved.</div>
+  </div>
+
+</nav>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Franco Minati | Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css'  th:href="@{/styles.css}">
+</head>
+
+<body>
+<div class="page-content">
+        <nav th:replace="views/components/navbar :: nav_bar"></nav>
+        <div class=" content" role="main">
+                <div class="inicio">
+                    <h1 class="saludo">Hola!, Soy Franco Minati</h1>
+                    <h2 class="saludo-b">Desarrollador Web</h2>
+                    <div class="proyectos">
+                        <h2 class="proyectos__title">Desarrollo mas reciente!</h2>
+                        <div class="container__proyecto" th:object="${ultimo_proyecto}">
+                            <img th:src="@{'/imagenes/'+*{imagen}}" alt="proyecto" class="img__proyecto">
+                            <div class="over__img">
+                                <div class="project__title" th:text="*{nombre}"></div>
+                                <div class="btns">
+                                    <a th:href="*{deploy_url}" class="btn__project">Ir al Repositorio</a>
+                                    <a th:href="*{url}" class="btn__project">Ir a pagina web</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:href="@{inicio.html}" class="btn__portfolio">Ir al Portfolio</a>
+                    </div>
+                </div>
+            </div>
+</div>
+
+</body>
+
+</html>
