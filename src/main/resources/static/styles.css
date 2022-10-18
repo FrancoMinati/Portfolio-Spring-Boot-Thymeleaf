@@ -214,7 +214,7 @@ body {
 
 .page-content {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 20% 80%;
   height: 100%; }
 
 .content, .content-form {

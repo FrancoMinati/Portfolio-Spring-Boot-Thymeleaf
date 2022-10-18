@@ -52,6 +52,7 @@ public class ProyectoController {
     @GetMapping("/editar/{id}")
     public String editarProyecto(Model model,@PathVariable("id")Long id){
         try{
+            model.addAttribute("estados",Estado.values());
             if(id==0){
                 model.addAttribute("proyecto",new Proyecto());
             }else{
@@ -107,5 +108,36 @@ public class ProyectoController {
             return "error";
         }
     }
+    @GetMapping("/eliminar?proyecto/{id}")
+    public String formulario_eliminar(@PathVariable("id") Long id,Model model){
+        try{
+            model.addAttribute("proyecto",this.proyectoService.getById(id));
+            return "views/formulario/eliminar";
+        }catch (Exception e){
+            model.addAttribute("error",e.getMessage());
+            return "error";
+        }
+    }
+    @PostMapping("/desactivar_proyecto/{id}")
+    public String desactivar_proyecto(Model model,@PathVariable("id") Long id){
+        try{
+            this.proyectoService.delete(id);
+            return "redirect:/crud";
+        }catch (Exception e){
+            model.addAttribute("error",e.getMessage());
+            return "error";
+        }
+    }
+    @PostMapping("/eliminar_proyecto/{id}")
+    public String eliminar_proyecto(Model model,@PathVariable("id") Long id){
+        try{
+            this.proyectoService.delete_hard(id);
+            return "redirect:/crud";
+        }catch (Exception e){
+            model.addAttribute("error",e.getMessage());
+            return "error";
+        }
+    }
+
 
 }

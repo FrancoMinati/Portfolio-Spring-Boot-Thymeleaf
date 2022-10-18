@@ -40,8 +40,10 @@
                     </div>
                     <div class="column">
                         <label for="estado" class="form_label">Estado</label>
-                        <input type="text" id="estado" class="form_txt_input" th:field="*{estado}">
-                        <div class="bgred" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+                        <select name="estado" id="estado" class="form_txt_input">
+                            <option selected>Estado</option>
+                            <option class="form_txt_input" th:each="estado : ${estados}" th:value="${estado}" th:text="${estado}"></option>
+                        </select>
                     </div>
                     <div class="column textarea">
                         <label for="descripcion" class="form_label_textarea">Descripción</label>

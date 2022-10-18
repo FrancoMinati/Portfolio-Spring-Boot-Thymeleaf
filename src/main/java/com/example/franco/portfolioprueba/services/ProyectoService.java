@@ -85,6 +85,20 @@ public class ProyectoService implements BaseService<Proyecto>{
         }
     }
     @Transactional
+    public Boolean delete_hard(Long id) throws Exception {
+        try{
+            Optional<Proyecto> opt=this.proyectoRepository.findById(id);
+            if(!opt.isEmpty()){
+                this.proyectoRepository.deleteById(id);
+            }else {
+                throw new Exception("No existe un proyecto con el id: " + id);
+            }
+            return true;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+    @Transactional
     public List<Proyecto> getAllByActive() throws Exception{
         try {
             List<Proyecto> entities = this.proyectoRepository.getAllByActive();
